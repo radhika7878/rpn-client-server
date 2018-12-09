@@ -1,0 +1,58 @@
+To run server - 
+python rpnserver 65432
+To close server - press Ctrl+C
+
+1. python rpnclient.py 65432 "15 7 /"
+
+Server Received: "15 7 /"
+Client Received Final: 2
+
+2. python rpnclient.py 65432 "15 7 1 1 + - / 3 * 2 1 1 + + -"
+
+Server Received: "1 1 +"
+Server Received: "7 2 -"
+Server Received: "15 5 /"
+Server Received: "3 3 *"
+Server Received: "1 1 +"
+Server Received: "2 2 +"
+Server Received: "9 4 -"
+Client Received: 2
+Client Received: 5
+Client Received: 3
+Client Received: 9
+Client Received: 2
+Client Received: 4
+Client Received Final: 5
+
+3. python rpnclient.py 65432 "1 2 3 +"
+
+Server Received: "2 3 +"
+Malformed Input
+
+4. python rpnclient.py 65432 "6 7 / 4 $"
+
+Server Received: "6 7 /"
+Client Received: 0
+Malformed Input
+
+5. python rpnclient.py 65432 "245 549 +"
+
+Server Received: "245 549 +"
+Client Received Final: 794
+
+6. python rpnclient.py 65432 "25 5 * 60 +"
+
+Server Received: "25 5 *"
+Server Received: "125 60 +"
+Client Received: 125
+Client Received Final: 185
+
+7. python rpnclient.py 65432 "-25 5 /"
+
+Server Received: "-25 5 /"
+Client Received Final: -5
+
+8. python rpnclient.py 65432 "-25 0 /"
+
+Server Received: "-25 0 /"
+Malformed input
